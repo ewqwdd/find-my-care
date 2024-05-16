@@ -3,6 +3,7 @@ import { Overpass, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavDesktop from "@/components/Nav/ui/NavDesktop";
+import Providers from "@/components/Providers/Providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,8 +32,10 @@ export default function RootLayout({
       <body
         className={cn(poppins.className, poppins.variable, overpass.variable, "bg-black-b10 text-black-b700")}
       >
-        <NavDesktop />
-        {children}
+        <Providers>
+          <NavDesktop />
+          {children}
+        </Providers>
       </body>
     </html>
   );
