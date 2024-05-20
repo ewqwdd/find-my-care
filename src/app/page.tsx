@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { getUserById } from "@/lib/entities/User";
 import Features from "./(sections)/Features";
 import Hero from "./(sections)/Hero";
 import SignIn from "./(sections)/SignIn";
