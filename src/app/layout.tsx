@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/widgets/Footer/ui/Footer";
 import { Suspense } from "react";
 import { Nav, NavDesktop } from "@/widgets/Nav";
+import Providers from "@/components/Providers/Providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -33,11 +34,13 @@ export default function RootLayout({
       <body
         className={cn(poppins.className, poppins.variable, overpass.variable, "bg-black-b10 text-black-b700")}
       >
-        <Suspense fallback={<NavDesktop />}>
-          <Nav />
-        </Suspense>
-        {children}
-        <Footer />
+        <Providers>
+          <Suspense fallback={<NavDesktop />}>
+            <Nav />
+          </Suspense>
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
