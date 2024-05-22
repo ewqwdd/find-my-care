@@ -22,5 +22,12 @@ export const testimonialsList: ITestimonial[] = [
         name: 'John Smith',
         rate: 5,
         role: 'Customer'
+    },
+    {
+        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque velit dolor, consequat quis nisi vel, feugiat suscipit sem. Aenean fringilla gravida arcu pretium facilisis. Nunc sed sapien sit.`,
+        icon: '/',
+        name: 'John Smith',
+        rate: 5,
+        role: 'Customer'
     }
 ] 

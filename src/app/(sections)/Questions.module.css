@@ -1,0 +1,13 @@
+
+
+.pic {
+    aspect-ratio: 156/145;
+    box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+    .pic {
+        aspect-ratio: 10/6;
+        box-shadow: none;
+    }
+}

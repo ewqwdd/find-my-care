@@ -136,6 +136,7 @@ module.exports = {
         '3xl': ['33px', '1.2'],
         '4xl': ['40px', '1.2'],
         '5xl': ['48px', '1.2'],
+        'hero': 'clamp(48px, 6vw, 75px)'
       },
       lineHeight: {
         'body': '1.2'

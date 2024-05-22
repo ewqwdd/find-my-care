@@ -1,14 +1,17 @@
 import { cn } from "@/lib/utils";
-import { HTMLAttributes, ReactNode } from "react";
+import { ElementType, HTMLAttributes, ReactNode } from "react";
 
-interface SectionWrapperProps extends HTMLAttributes<HTMLDivElement> {
+interface SectionWrapperProps<T extends ElementType> extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
+  as?: T
 }
 
-export default function SectionWrapper({ className, children, ...props }: SectionWrapperProps) {
+export default function SectionWrapper<T extends ElementType = 'section'>({ className, children, as: _as, ...props }: SectionWrapperProps<T>) {
+  const Cmp = _as ?? 'section'
+  
   return (
-    <section className={cn("px-3", className)} {...props}>
+    <Cmp className={cn("px-3", className)} {...props}>
       <div className="max-w-7xl mx-auto">{children}</div>
-    </section>
+    </Cmp>
   );
 }

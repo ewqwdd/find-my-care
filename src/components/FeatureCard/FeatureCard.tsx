@@ -27,12 +27,12 @@ export default function FeatureCard({
   }
   return (
     <div className={cn("p-4 flex gap-4  items-center", className)} {...props}>
-      <div className="relative size-16 bg-primary-50 rounded-full flex items-center justify-center text-primary-400 overflow-clip">
+      <div className="flex-shrink-0 relative w-16 h-16 bg-primary-50 rounded-full flex items-center justify-center text-primary-400 overflow-clip">
         {iconNode}
       </div>
       <div className="flex flex-col gap-2 max-w-[420px]">
-        <h3 className="font-overpass font-semibold text-xl leading-body">{heading}</h3>
-        <p className="text-black-b100 text-base">{paragraph}</p>
+        <h3 className="font-overpass font-semibold text-xl leading-body break-words flex-grow">{heading}</h3>
+        <p className="text-black-b100 text-base break-words">{paragraph}</p>
       </div>
     </div>
   );

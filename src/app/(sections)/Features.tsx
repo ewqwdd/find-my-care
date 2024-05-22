@@ -1,4 +1,5 @@
 import FeatureCard, { IFeatureCard } from "@/components/FeatureCard/FeatureCard";
+import MediaMinWrapper from "@/components/MediaMinWrapper/MediaMinWrapper";
 import SectionWrapper from "@/components/SectionWrapper/SectionWrapper";
 import Image from "next/image";
 
@@ -22,13 +23,18 @@ const features: IFeatureCard[] = [
 
 export default function Features() {
   return (
-    <SectionWrapper id="features" className="py-20">
+    <SectionWrapper id="features" className="py-20 px-3 relative overflow-x-clip">
+      <MediaMinWrapper query={768}>
+        <div className="absolute left-1/2 -translate-x-1/2 w-[185vw] h-[99vw] bottom-0 -z-10">
+          <Image src='/features-bg.svg' alt="background picture" fill className="object-contain" />
+        </div>
+      </MediaMinWrapper>
       <h2 className="text-4xl text-black-b800 text-center font-semibold">Why choose us?</h2>
-      <div className="grid grid-cols-2 mt-2">
-        <div className="relative">
+      <div className="flex flex-col items-center md:grid md:grid-cols-3 lg:grid-cols-2 mt-2">
+        <div className="relative aspect-square max-md:max-w-md max-lg:w-full">
           <Image src="/why-choose-us.svg" alt="why choose us illustration" fill className="object-contain" />
         </div>
-        <div className="flex flex-col pt-8">
+        <div className="flex flex-col pt-2 md:pt-8 md:max-lg:col-span-2 max-md:items-center">
           {features.map((elem, index) => (
             <FeatureCard key={index} {...elem} />
           ))}
