@@ -1,26 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { supabaseAuth } from "@/lib/supabase";
+import clientPromise from "@/lib/db/db";
 
 export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
 
     if (!email || !password) {
-      return new NextResponse("Credentials are incomplete", { status: 422 });
+      return new NextResponse(JSON.stringify({ status: false, msg: "Credentials are incomplete" }), { status: 422 });
     }
 
-    const userExists = await supabaseAuth.from("users").select().eq("email", email).single();
-    if (Number(userExists.count) > 0) {
-      return new NextResponse("User with that email already exists", { status: 400 });
+    const client = await clientPromise;
+    const db = client.db();
+    const userExists = await db.collection("users").findOne({ email });
+
+    if (userExists) {
+      return new NextResponse(JSON.stringify({ status: false, msg: "User with that email already exists" }), { status: 400 });
     }
+
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const user = await supabaseAuth.from("users").insert({
+    await db.collection("users").insertOne({
       email,
       password: hashedPassword,
+      emailVerified: false,
     });
-    return user;
+
+    return new NextResponse(JSON.stringify({ status: true, msg: "success" }));
   } catch (err) {
-    return new NextResponse("Internal server error", { status: 500 });
+    console.error(err);
+    return new NextResponse(JSON.stringify({ status: false, msg: "error" }), { status: 500 });
   }
 }

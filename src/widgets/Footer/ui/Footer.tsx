@@ -3,7 +3,7 @@ import Link from "next/link";
 import { socials } from "../config/config";
 import Email from "@/lib/icons/email.svg";
 import Phone from "@/lib/icons/phone.svg";
-import { Button } from "@/components/ui/button";
+import LoginBtn from "./LoginBtn";
 
 export default function Footer() {
   return (
@@ -46,9 +46,7 @@ export default function Footer() {
               +123 3112 1231
             </Link>
           </div>
-          <Button asChild size={"m"} className="md:self-start">
-            <Link href="/">Login</Link>
-          </Button>
+          <LoginBtn />
         </div>
       </div>
     </SectionWrapper>

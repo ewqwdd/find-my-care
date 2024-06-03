@@ -105,6 +105,10 @@
   height: calc(100dvh - var(--nav-height));
 }
 
+.min-screen-no-nav {
+  height: calc(100dvh - var(--nav-height));
+}
+
 @layer base {
   * {
     @apply border-border;
