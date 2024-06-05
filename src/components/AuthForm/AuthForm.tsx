@@ -31,7 +31,10 @@ export default function AuthForm() {
       <div className="flex flex-col w-full items-center gap-2 mt-4">
         <span className="">Or continue with:</span>
         <div className="flex">
-          <Button className="bg-black-b700 rounded-full hover:bg-black-b500 p-[6px]" onClick={() => signIn("google")}>
+          <Button
+            className="bg-black-b700 rounded-full hover:bg-black-b500 p-[6px]"
+            onClick={() => signIn("google", { redirect: true, callbackUrl: "/u/dashboard" })}
+          >
             <Google className="size-[30px]" />
           </Button>
         </div>
